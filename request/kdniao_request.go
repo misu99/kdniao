@@ -2,13 +2,13 @@ package request
 
 import (
 	"encoding/base64"
-	"github.com/RiverDanceGit/kdniaoGo"
-	"github.com/RiverDanceGit/kdniaoGo/util"
+	"github.com/yangzhenrui/kdniao"
+	"github.com/yangzhenrui/kdniao/util"
 	"net/url"
 )
 
 type KdniaoRequest struct {
-	config      kdniaoGo.KdniaoConfig
+	config      kdniao.KdniaoConfig
 	requestType string
 	requestData string
 	dataType    string
@@ -24,12 +24,12 @@ func (req KdniaoRequest) ToValues() url.Values {
 	return values
 }
 
-func (req *KdniaoRequest) SetConfig(config kdniaoGo.KdniaoConfig) *KdniaoRequest {
+func (req *KdniaoRequest) SetConfig(config kdniao.KdniaoConfig) *KdniaoRequest {
 	req.config = config
 	return req
 }
 
-func (req KdniaoRequest) GetConfig() kdniaoGo.KdniaoConfig {
+func (req KdniaoRequest) GetConfig() kdniao.KdniaoConfig {
 	return req.config
 }
 

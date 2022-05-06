@@ -2,14 +2,14 @@ package test
 
 import (
 	"errors"
-	"github.com/RiverDanceGit/kdniaoGo"
-	"github.com/RiverDanceGit/kdniaoGo/util"
+	"github.com/yangzhenrui/kdniao"
+	"github.com/yangzhenrui/kdniao/util"
 	"strings"
 )
 
-func getConfig() (kdniaoGo.KdniaoConfig, error) {
+func getConfig() (kdniao.KdniaoConfig, error) {
 	eBusinessId, appKey, err := getConfigValue()
-	return kdniaoGo.NewKdniaoConfig(eBusinessId, appKey), err
+	return kdniao.NewKdniaoConfig(eBusinessId, appKey), err
 }
 
 func getConfigValue() (string, string, error) {

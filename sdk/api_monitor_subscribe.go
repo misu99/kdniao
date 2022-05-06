@@ -2,22 +2,22 @@ package sdk
 
 import (
 	"encoding/json"
-	"github.com/RiverDanceGit/kdniaoGo"
-	"github.com/RiverDanceGit/kdniaoGo/enum"
-	"github.com/RiverDanceGit/kdniaoGo/request"
-	"github.com/RiverDanceGit/kdniaoGo/response"
-	"github.com/RiverDanceGit/kdniaoGo/util"
-	"github.com/RiverDanceGit/kdniaoGo/util/http"
+	"github.com/yangzhenrui/kdniao"
+	"github.com/yangzhenrui/kdniao/enum"
+	"github.com/yangzhenrui/kdniao/request"
+	"github.com/yangzhenrui/kdniao/response"
+	"github.com/yangzhenrui/kdniao/util"
+	"github.com/yangzhenrui/kdniao/util/http"
 	"strconv"
 )
 
-func NewApiMonitorSubscribe(config kdniaoGo.KdniaoConfig, logger kdniaoGo.KdniaoLoggerInterface) ApiMonitorSubscribe {
+func NewApiMonitorSubscribe(config kdniao.KdniaoConfig, logger kdniao.KdniaoLoggerInterface) ApiMonitorSubscribe {
 	return ApiMonitorSubscribe{config, logger}
 }
 
 type ApiMonitorSubscribe struct {
-	config kdniaoGo.KdniaoConfig
-	logger kdniaoGo.KdniaoLoggerInterface
+	config kdniao.KdniaoConfig
+	logger kdniao.KdniaoLoggerInterface
 }
 
 func (obj ApiMonitorSubscribe) GetRequest(logisticCode, shipperCode string) request.MonitorSubscribeRequest {

@@ -1,12 +1,12 @@
 package response
 
 type RecogniseResponse struct {
-	Success      bool                        `json:"Success"`
-	Code         string                      `json:"Code"`
-	Reason       string                      `json:"Reason"`
-	EBusinessId  string                      `json:"EBusinessID"`
-	LogisticCode string                      `json:"LogisticCode"` // 物流单号
+	EBusinessId  string                      `json:"EBusinessID"`  // 用户 ID
+	LogisticCode string                      `json:"LogisticCode"` // 快递单号
+	Success      bool                        `json:"Success"`      // 成功与否(true/false)
+	Code         string                      `json:"Code"`         // 失败原因
 	Shippers     []RecogniseResponseShippers `json:"Shippers"`
+	Reason       string                      `json:"Reason"`
 }
 
 type RecogniseResponseShippers struct {

@@ -1,14 +1,14 @@
 package http
 
 import (
-	"github.com/RiverDanceGit/kdniaoGo"
+	"github.com/yangzhenrui/kdniao"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"time"
 )
 
-func HttpPostForm(reqUrl string, params url.Values, logger kdniaoGo.KdniaoLoggerInterface) (HttpResponse, error) {
+func HttpPostForm(reqUrl string, params url.Values, logger kdniao.KdniaoLoggerInterface) (HttpResponse, error) {
 	startTime := time.Now()
 	var httpResp HttpResponse
 	resp, err := http.PostForm(reqUrl, params)

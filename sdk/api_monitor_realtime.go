@@ -2,22 +2,22 @@ package sdk
 
 import (
 	"encoding/json"
-	"github.com/RiverDanceGit/kdniaoGo"
-	"github.com/RiverDanceGit/kdniaoGo/enum"
-	"github.com/RiverDanceGit/kdniaoGo/request"
-	"github.com/RiverDanceGit/kdniaoGo/response"
-	"github.com/RiverDanceGit/kdniaoGo/util"
-	"github.com/RiverDanceGit/kdniaoGo/util/http"
+	"github.com/yangzhenrui/kdniao"
+	"github.com/yangzhenrui/kdniao/enum"
+	"github.com/yangzhenrui/kdniao/request"
+	"github.com/yangzhenrui/kdniao/response"
+	"github.com/yangzhenrui/kdniao/util"
+	"github.com/yangzhenrui/kdniao/util/http"
 	"strconv"
 )
 
-func NewApiMonitorRealtime(config kdniaoGo.KdniaoConfig, logger kdniaoGo.KdniaoLoggerInterface) ApiMonitorRealtime {
+func NewApiMonitorRealtime(config kdniao.KdniaoConfig, logger kdniao.KdniaoLoggerInterface) ApiMonitorRealtime {
 	return ApiMonitorRealtime{config, logger}
 }
 
 type ApiMonitorRealtime struct {
-	config kdniaoGo.KdniaoConfig
-	logger kdniaoGo.KdniaoLoggerInterface
+	config kdniao.KdniaoConfig
+	logger kdniao.KdniaoLoggerInterface
 }
 
 func (obj ApiMonitorRealtime) GetRequest(logisticCode, shipperCode string) request.MonitorRealtimeRequest {

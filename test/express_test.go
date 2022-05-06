@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/RiverDanceGit/kdniaoGo/data"
+	"github.com/yangzhenrui/kdniao/data"
 	"testing"
 )
 

@@ -1,8 +1,8 @@
 package test
 
 import (
-	"github.com/RiverDanceGit/kdniaoGo"
-	"github.com/RiverDanceGit/kdniaoGo/sdk"
+	"github.com/yangzhenrui/kdniao"
+	"github.com/yangzhenrui/kdniao/sdk"
 	"testing"
 )
 
@@ -12,7 +12,7 @@ func TestRecognise(t *testing.T) {
 		t.Error("err", err)
 		return
 	}
-	logger := kdniaoGo.NewKdniaoLogger()
+	logger := kdniao.NewKdniaoLogger()
 
 	apiRecogniseSdk := sdk.NewApiRecognise(config, logger)
 	req := apiRecogniseSdk.GetRequest("550000609031770")

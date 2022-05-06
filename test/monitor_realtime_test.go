@@ -1,8 +1,8 @@
 package test
 
 import (
-	"github.com/RiverDanceGit/kdniaoGo"
-	"github.com/RiverDanceGit/kdniaoGo/sdk"
+	"github.com/yangzhenrui/kdniao"
+	"github.com/yangzhenrui/kdniao/sdk"
 	"testing"
 )
 
@@ -12,7 +12,7 @@ func TestMonitorRealtime(t *testing.T) {
 		t.Error("err", err)
 		return
 	}
-	logger := kdniaoGo.NewKdniaoLogger()
+	logger := kdniao.NewKdniaoLogger()
 
 	apiMonitorRealtimeSdk := sdk.NewApiMonitorRealtime(config, logger)
 	req := apiMonitorRealtimeSdk.GetRequest("4303618027892", "YD")

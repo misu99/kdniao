@@ -2,8 +2,13 @@ package request
 
 import (
 	"encoding/json"
-	"github.com/RiverDanceGit/kdniaoGo/enum"
+	"github.com/yangzhenrui/kdniao/enum"
 )
+
+/**
+ * 在途监控-国内版
+ * 即时查询接口，此接口用于向快递公司实时查询物流轨迹信息
+ */
 
 func NewMonitorRealtimeRequest() MonitorRealtimeRequest {
 	req := MonitorRealtimeRequest{}
@@ -14,9 +19,11 @@ func NewMonitorRealtimeRequest() MonitorRealtimeRequest {
 
 type MonitorRealtimeRequest struct {
 	KdniaoRequest
-	LogisticCode string `json:"LogisticCode"`        // 物流单号
-	ShipperCode  string `json:"ShipperCode"`         // 快递公司编码
-	OrderCode    string `json:"OrderCode,omitempty"` // 订单编号
+	OrderCode    string `json:"OrderCode,omitempty"`    // 订单编号
+	CustomerName string `json:"CustomerName,omitempty"` // ShipperCode 为 SF 时必填，对应寄件人 /收件人手机号后四位；ShipperCode 为其他快递时，可不填或保 留字段，不可传值
+	Sort         int    `json:"Sort,omitempty"`         // 轨迹排序，0-升序，1-降序， 默认 0-升序
+	ShipperCode  string `json:"ShipperCode"`            // 快递公司编码
+	LogisticCode string `json:"LogisticCode"`           // 快递单号
 }
 
 func (req *MonitorRealtimeRequest) SetLogisticCode(logisticCode string) *MonitorRealtimeRequest {

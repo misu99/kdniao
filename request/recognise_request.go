@@ -2,7 +2,7 @@ package request
 
 import (
 	"encoding/json"
-	"github.com/RiverDanceGit/kdniaoGo/enum"
+	"github.com/yangzhenrui/kdniao/enum"
 )
 
 func NewRecogniseRequest() RecogniseRequest {

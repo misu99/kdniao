@@ -4,12 +4,6 @@ import (
 	"strings"
 )
 
-func NewExpressCompany() ExpressCompany {
-	expressCompany := ExpressCompany{}
-	expressCompany.Init()
-	return expressCompany
-}
-
 type ExpressCompany struct {
 	List []ExpressCompanyItem
 }
@@ -19,16 +13,22 @@ type ExpressCompanyItem struct {
 	ExpressCode string
 }
 
+func NewExpressCompany() ExpressCompany {
+	expressCompany := ExpressCompany{}
+	expressCompany.Init()
+	return expressCompany
+}
+
 func (ec *ExpressCompany) Init() {
 	ec.List = GetData()
 }
 
-// 获取所有快递公司列表(提供原始数据以便自行扩展查找的方法)
+// GetList 获取所有快递公司列表(提供原始数据以便自行扩展查找的方法)
 func (ec ExpressCompany) GetList() []ExpressCompanyItem {
 	return ec.List
 }
 
-// 关键字模糊查找快递公司
+// Search 关键字模糊查找快递公司
 func (ec ExpressCompany) Search(word string) []ExpressCompanyItem {
 	items := []ExpressCompanyItem{}
 	if "" == word {
@@ -46,7 +46,7 @@ func (ec ExpressCompany) Search(word string) []ExpressCompanyItem {
 	return items
 }
 
-// 获取快递公司名称
+// GetExpressNameByCode 获取快递公司名称
 func (ec ExpressCompany) GetExpressNameByCode(expressCode string) string {
 	item, has := ec.GetInfoByExpressCode(expressCode)
 	if has {
@@ -55,7 +55,7 @@ func (ec ExpressCompany) GetExpressNameByCode(expressCode string) string {
 	return ""
 }
 
-// 获取快递公司编号
+// GetExpressCodeByName 获取快递公司编号
 func (ec ExpressCompany) GetExpressCodeByName(expressName string) string {
 	item, has := ec.GetInfoByExpressName(expressName)
 	if has {
@@ -64,7 +64,7 @@ func (ec ExpressCompany) GetExpressCodeByName(expressName string) string {
 	return ""
 }
 
-// 获取快递公司
+// GetInfoByExpressCode 获取快递单号获取快递公司
 func (ec ExpressCompany) GetInfoByExpressCode(expressCode string) (ExpressCompanyItem, bool) {
 	var express ExpressCompanyItem
 	if "" == expressCode {
@@ -78,7 +78,7 @@ func (ec ExpressCompany) GetInfoByExpressCode(expressCode string) (ExpressCompan
 	return express, false
 }
 
-// 获取快递公司
+// GetInfoByExpressName 通过快递公司名称获取快递公司
 func (ec ExpressCompany) GetInfoByExpressName(expressName string) (ExpressCompanyItem, bool) {
 	var express ExpressCompanyItem
 	if "" == expressName {
