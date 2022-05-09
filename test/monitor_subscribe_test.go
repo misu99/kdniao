@@ -2,6 +2,7 @@ package test
 
 import (
 	"github.com/yangzhenrui/kdniao"
+	"github.com/yangzhenrui/kdniao/request"
 	"github.com/yangzhenrui/kdniao/sdk"
 	"testing"
 )
@@ -15,7 +16,8 @@ func TestMonitorSubscribe(t *testing.T) {
 	logger := kdniao.NewKdniaoLogger()
 
 	apiMonitorSubscribeSdk := sdk.NewApiMonitorSubscribe(config, logger)
-	req := apiMonitorSubscribeSdk.GetRequest("4303618027892", "YD")
+	reqParams := request.MonitorSubscribeRequest{}
+	req := apiMonitorSubscribeSdk.GetRequest(reqParams)
 	resp, err := apiMonitorSubscribeSdk.GetResponse(req)
 	if err != nil {
 		t.Error("err", err)

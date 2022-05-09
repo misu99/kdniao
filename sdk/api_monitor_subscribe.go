@@ -2,6 +2,7 @@ package sdk
 
 import (
 	"encoding/json"
+	"github.com/jinzhu/copier"
 	"github.com/yangzhenrui/kdniao"
 	"github.com/yangzhenrui/kdniao/enum"
 	"github.com/yangzhenrui/kdniao/request"
@@ -20,11 +21,9 @@ type ApiMonitorSubscribe struct {
 	logger kdniao.KdniaoLoggerInterface
 }
 
-func (obj ApiMonitorSubscribe) GetRequest(logisticCode, shipperCode string) request.MonitorSubscribeRequest {
+func (obj ApiMonitorSubscribe) GetRequest(params request.MonitorSubscribeRequest) request.MonitorSubscribeRequest {
 	req := request.NewMonitorSubscribeRequest()
-	req.SetConfig(obj.config)
-	req.SetLogisticCode(logisticCode)
-	req.SetShipperCode(shipperCode)
+	copier.Copy(&req, &params)
 	return req
 }
 
