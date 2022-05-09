@@ -2,6 +2,7 @@ package sdk
 
 import (
 	"encoding/json"
+	"github.com/jinzhu/copier"
 	"github.com/yangzhenrui/kdniao"
 	"github.com/yangzhenrui/kdniao/enum"
 	"github.com/yangzhenrui/kdniao/request"
@@ -20,11 +21,9 @@ type ApiMonitorRealtime struct {
 	logger kdniao.KdniaoLoggerInterface
 }
 
-func (obj ApiMonitorRealtime) GetRequest(logisticCode, shipperCode string) request.MonitorRealtimeRequest {
+func (obj ApiMonitorRealtime) GetRequest(reqParams request.MonitorRealtimeRequest) request.MonitorRealtimeRequest {
 	req := request.NewMonitorRealtimeRequest()
-	req.SetConfig(obj.config)
-	req.SetLogisticCode(logisticCode)
-	req.SetShipperCode(shipperCode)
+	copier.Copy(&req, &reqParams)
 	return req
 }
 

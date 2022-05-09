@@ -17,6 +17,8 @@ func TestMonitorSubscribe(t *testing.T) {
 
 	apiMonitorSubscribeSdk := sdk.NewApiMonitorSubscribe(config, logger)
 	reqParams := request.MonitorSubscribeRequest{}
+	reqParams.LogisticCode = "4303618027892"
+	reqParams.ShipperCode = "YD"
 	req := apiMonitorSubscribeSdk.GetRequest(reqParams)
 	resp, err := apiMonitorSubscribeSdk.GetResponse(req)
 	if err != nil {

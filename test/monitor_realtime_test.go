@@ -2,6 +2,7 @@ package test
 
 import (
 	"github.com/yangzhenrui/kdniao"
+	"github.com/yangzhenrui/kdniao/request"
 	"github.com/yangzhenrui/kdniao/sdk"
 	"testing"
 )
@@ -15,7 +16,10 @@ func TestMonitorRealtime(t *testing.T) {
 	logger := kdniao.NewKdniaoLogger()
 
 	apiMonitorRealtimeSdk := sdk.NewApiMonitorRealtime(config, logger)
-	req := apiMonitorRealtimeSdk.GetRequest("4303618027892", "YD")
+	reqParams := request.MonitorRealtimeRequest{}
+	reqParams.LogisticCode = "4303618027892"
+	reqParams.ShipperCode = "YD"
+	req := apiMonitorRealtimeSdk.GetRequest(reqParams)
 	resp, err := apiMonitorRealtimeSdk.GetResponse(req)
 	if err != nil {
 		t.Error("err", err)
