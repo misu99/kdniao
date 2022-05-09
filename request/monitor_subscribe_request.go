@@ -117,6 +117,15 @@ func (req MonitorSubscribeRequest) GetCustomerName() string {
 	return req.CustomerName
 }
 
+func (req *MonitorSubscribeRequest) SetSort(sort int) *MonitorSubscribeRequest {
+	req.Sort = sort
+	return req
+}
+
+func (req MonitorSubscribeRequest) GetSort() int {
+	return req.Sort
+}
+
 func (req *MonitorSubscribeRequest) UpdateRequestData() *MonitorSubscribeRequest {
 	req.requestData = req.ToJson()
 	return req

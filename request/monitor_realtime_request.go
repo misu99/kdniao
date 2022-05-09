@@ -53,6 +53,24 @@ func (req MonitorRealtimeRequest) GetOrderCode() string {
 	return req.OrderCode
 }
 
+func (req *MonitorRealtimeRequest) SetSort(sort int) *MonitorRealtimeRequest {
+	req.Sort = sort
+	return req
+}
+
+func (req MonitorRealtimeRequest) GetSort() int {
+	return req.Sort
+}
+
+func (req *MonitorRealtimeRequest) SetCustomerName(customerName string) *MonitorRealtimeRequest {
+	req.CustomerName = customerName
+	return req
+}
+
+func (req MonitorRealtimeRequest) GetCustomerName() string {
+	return req.CustomerName
+}
+
 func (req *MonitorRealtimeRequest) UpdateRequestData() *MonitorRealtimeRequest {
 	req.requestData = req.ToJson()
 	return req
