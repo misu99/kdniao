@@ -53,6 +53,7 @@ type OrderRequest struct {
 	DeliveryMethod        int                     `json:"DeliveryMethod,omitempty"`                     // 送货方式/派送类型/配送方式 (快运字段)： 0-自提 1-送货上门（不含上楼） 2-送货上楼 当 ShipperCode 为 JTSD 时必 填，支持以下传值： 3-派送上门 4-站点自提 5-快递柜自提 6-代收点自提 当 ShipperCode 为 DBL 或 DBLKY 时必填，支持以下传值： 1-自提 2-送货进仓 3-送货（不含上楼） 4-送货上楼 5-大件上楼 当 ShipperCode 为 ZYE 时必 填，支持以下传值： 1-送货上门 2-自提
 	CurrencyCode          string                  `json:"CurrencyCode,omitempty"`                       // 货物单价的币种： CNY: 人民币 HKD: 港币 NTD: 新台币 MOP: 澳门元 (ShipperCode 为 SF 且收件地址为港澳台地区，必填)
 	Dutiable              Dutiable                `json:"Dutiable,omitempty" json:"Dutiable,omitempty"` // 申报信息
+	IsTest                int                     `json:"IsTest"`
 }
 
 type OrderRequestReceiver struct {

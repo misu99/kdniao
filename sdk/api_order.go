@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"github.com/jinzhu/copier"
 	"github.com/yangzhenrui/kdniao"
-	"github.com/yangzhenrui/kdniao/enum"
 	"github.com/yangzhenrui/kdniao/request"
 	"github.com/yangzhenrui/kdniao/response"
 	"github.com/yangzhenrui/kdniao/util"
@@ -29,7 +28,8 @@ func (obj *ApiOrder) GetRequest(params request.OrderRequest) request.OrderReques
 }
 
 func (obj ApiOrder) GetResponse(req request.OrderRequest) (response.OrderResponse, error) {
-	url := enum.GATEWAY + enum.URI_ORDER
+	//url := enum.GATEWAY + enum.URI_ORDER
+	url := "http://sandboxapi.kdniao.com:8080/kdniaosandbox/gateway/exterfaceI nvoke.json"
 
 	req.UpdateRequestData()
 	var resp response.OrderResponse
