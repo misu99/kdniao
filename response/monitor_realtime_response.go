@@ -1,7 +1,7 @@
 package response
 
 type MonitorRealtimeResponse struct {
-	EBusinessId    string                         `json:"EBusinessID"`
+	EBusinessID    string                         `json:"EBusinessID"`
 	OrderCode      string                         `json:"OrderCode"`    // 订单编号
 	ShipperCode    string                         `json:"ShipperCode"`  // 快递公司编码
 	LogisticCode   string                         `json:"LogisticCode"` // 物流运单号

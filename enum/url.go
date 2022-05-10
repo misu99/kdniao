@@ -5,4 +5,5 @@ const (
 	GATEWAY         = "http://api.kdniao.com"
 	URI_BUSINESS    = "/Ebusiness/EbusinessOrderHandle.aspx"
 	URI_API         = "/api/dist"
+	URI_ORDER       = "/api/EOrderService"
 )

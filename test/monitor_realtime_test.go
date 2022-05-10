@@ -25,7 +25,7 @@ func TestMonitorRealtime(t *testing.T) {
 		t.Error("err", err)
 		return
 	}
-	t.Log("resp.EBusinessId", resp.EBusinessId)
+	t.Log("resp.EBusinessId", resp.EBusinessID)
 	t.Log("resp.OrderCode", resp.OrderCode)
 	t.Log("resp.ShipperCode", resp.ShipperCode)
 	t.Log("resp.LogisticCode", resp.LogisticCode)

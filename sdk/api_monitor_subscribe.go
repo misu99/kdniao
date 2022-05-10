@@ -12,8 +12,8 @@ import (
 	"strconv"
 )
 
-func NewApiMonitorSubscribe(config kdniao.KdniaoConfig, logger kdniao.KdniaoLoggerInterface) ApiMonitorSubscribe {
-	return ApiMonitorSubscribe{config, logger}
+func NewApiMonitorSubscribe(config kdniao.KdniaoConfig, logger kdniao.KdniaoLoggerInterface) *ApiMonitorSubscribe {
+	return &ApiMonitorSubscribe{config, logger}
 }
 
 type ApiMonitorSubscribe struct {
@@ -21,7 +21,7 @@ type ApiMonitorSubscribe struct {
 	logger kdniao.KdniaoLoggerInterface
 }
 
-func (obj ApiMonitorSubscribe) GetRequest(params request.MonitorSubscribeRequest) request.MonitorSubscribeRequest {
+func (obj *ApiMonitorSubscribe) GetRequest(params request.MonitorSubscribeRequest) request.MonitorSubscribeRequest {
 	req := request.NewMonitorSubscribeRequest()
 	req.KdniaoRequest.SetConfig(obj.config)
 	copier.Copy(&req, &params)

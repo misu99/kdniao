@@ -25,6 +25,6 @@ func TestMonitorSubscribe(t *testing.T) {
 		t.Error("err", err)
 		return
 	}
-	t.Log("resp.EBusinessId", resp.EBusinessId)
+	t.Log("resp.EBusinessId", resp.EBusinessID)
 	t.Log("resp.UpdateTime", resp.UpdateTime)
 }

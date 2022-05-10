@@ -29,7 +29,7 @@ type MonitorSubscribeRequest struct {
 	OrderCode     string                          `json:"OrderCode,omitempty"`    // 订单编号
 	Receiver      MonitorSubscribeRequestReceiver `json:"Receiver,omitempty"`
 	Sender        MonitorSubscribeRequestSender   `json:"Sender,omitempty"`
-	IsSendMessage string                          `json:"IsSendMessage,omitempty"` // 是否订阅短信：0-不需要；1-需要
+	IsSendMessage int                             `json:"IsSendMessage,omitempty"` // 是否订阅短信：0-不需要；1-需要
 	//MemberId      string                             `json:"MemberID,omitempty"`    // 会员标识
 	//WareHouseId   string                             `json:"WareHouseID,omitempty"` // 仓库标识
 	//CustomerPwd   string                             `json:"CustomerPwd,omitempty"` // 电子面单密码
