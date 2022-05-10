@@ -12,8 +12,8 @@ import (
 	"strconv"
 )
 
-func NewApiMonitorRealtime(config kdniao.KdniaoConfig, logger kdniao.KdniaoLoggerInterface) ApiMonitorRealtime {
-	return ApiMonitorRealtime{config, logger}
+func NewApiMonitorRealtime(config kdniao.KdniaoConfig, logger kdniao.KdniaoLoggerInterface) *ApiMonitorRealtime {
+	return &ApiMonitorRealtime{config, logger}
 }
 
 type ApiMonitorRealtime struct {
@@ -21,8 +21,9 @@ type ApiMonitorRealtime struct {
 	logger kdniao.KdniaoLoggerInterface
 }
 
-func (obj ApiMonitorRealtime) GetRequest(reqParams request.MonitorRealtimeRequest) request.MonitorRealtimeRequest {
+func (obj *ApiMonitorRealtime) GetRequest(reqParams request.MonitorRealtimeRequest) request.MonitorRealtimeRequest {
 	req := request.NewMonitorRealtimeRequest()
+	req.KdniaoRequest.SetConfig(obj.config)
 	copier.Copy(&req, &reqParams)
 	return req
 }

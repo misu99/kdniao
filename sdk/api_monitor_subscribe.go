@@ -23,6 +23,7 @@ type ApiMonitorSubscribe struct {
 
 func (obj ApiMonitorSubscribe) GetRequest(params request.MonitorSubscribeRequest) request.MonitorSubscribeRequest {
 	req := request.NewMonitorSubscribeRequest()
+	req.KdniaoRequest.SetConfig(obj.config)
 	copier.Copy(&req, &params)
 	return req
 }
