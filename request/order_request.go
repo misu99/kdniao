@@ -28,20 +28,20 @@ type OrderRequest struct {
 	LogisticCode          string                  `json:"LogisticCode,omitempty"`                       // 快递单号
 	ThrOrderCode          string                  `json:"ThrOrderCode,omitempty"`                       // 京东商城的订单号 (ShipperCode 为 JD 且 ExpType 为 1 时必填)
 	OrderCode             string                  `json:"OrderCode"`                                    // 订单编号
-	PayType               string                  `json:"PayType"`                                      // 邮费支付方式: 1-现付，2-到付，3-月结，4-第三方支付)
+	PayType               int                     `json:"PayType"`                                      // 邮费支付方式: 1-现付，2-到付，3-月结，4-第三方支付)
 	ExpType               string                  `json:"ExpType"`                                      // 快递类型：1-标准快件
 	IsReturnSignBill      int                     `json:"IsReturnSignBill,omitempty"`                   // 是否要求签回单 0-不要求，1-要求
 	OperateRequire        string                  `json:"OperateRequire,omitempty"`                     // 签回单操作要求(如：签名、盖 章、身份证复印件等)
-	Cost                  string                  `json:"Cost,omitempty"`                               // 快递运费
-	OtherCost             string                  `json:"OtherCost,omitempty"`                          // 快递运费
+	Cost                  float64                 `json:"Cost,omitempty"`                               // 快递运费
+	OtherCost             float64                 `json:"OtherCost,omitempty"`                          // 快递运费
 	Receiver              OrderRequestReceiver    `json:"Receiver"`                                     // 收件信息
 	Sender                OrderRequestSender      `json:"Sender"`                                       // 寄件信息
-	IsNotice              string                  `json:"IsNotice,omitempty"`                           // 是否通知快递员上门揽件：0-通知；1-不通知；不填则
+	IsNotice              int                     `json:"IsNotice,omitempty"`                           // 是否通知快递员上门揽件：0-通知；1-不通知；不填则
 	StartDate             string                  `json:"StartDate,omitempty"`                          // 上门揽件时间段，格式：YYYY-MM-DD HH24:MM:SS
 	EndDate               string                  `json:"EndDate,omitempty"`                            // 上门揽件结束时间，示例： 2021-01-01 17:00:00
-	Weight                string                  `json:"Weight,omitempty"`                             // 包裹总重量kg
-	Quantity              string                  `json:"Quantity"`                                     // 包裹数，一个包裹对应一个运单号，如果是大于1个包裹，返回则按照子母件的方式返回母运单号和子运单号
-	Volume                string                  `json:"Volume,omitempty"`                             // 包裹总体积m3
+	Weight                float64                 `json:"Weight,omitempty"`                             // 包裹总重量kg
+	Quantity              int                     `json:"Quantity"`                                     // 包裹数，一个包裹对应一个运单号，如果是大于1个包裹，返回则按照子母件的方式返回母运单号和子运单号
+	Volume                float64                 `json:"Volume,omitempty"`                             // 包裹总体积m3
 	Remark                string                  `json:"Remark,omitempty"`                             // 备注
 	AddService            OrderRequestAddService  `json:"AddService"`                                   // 增值服务
 	Commodity             []OrderRequestCommodity `json:"Commodity,omitempty"`                          // 商品信息
@@ -53,7 +53,6 @@ type OrderRequest struct {
 	DeliveryMethod        int                     `json:"DeliveryMethod,omitempty"`                     // 送货方式/派送类型/配送方式 (快运字段)： 0-自提 1-送货上门（不含上楼） 2-送货上楼 当 ShipperCode 为 JTSD 时必 填，支持以下传值： 3-派送上门 4-站点自提 5-快递柜自提 6-代收点自提 当 ShipperCode 为 DBL 或 DBLKY 时必填，支持以下传值： 1-自提 2-送货进仓 3-送货（不含上楼） 4-送货上楼 5-大件上楼 当 ShipperCode 为 ZYE 时必 填，支持以下传值： 1-送货上门 2-自提
 	CurrencyCode          string                  `json:"CurrencyCode,omitempty"`                       // 货物单价的币种： CNY: 人民币 HKD: 港币 NTD: 新台币 MOP: 澳门元 (ShipperCode 为 SF 且收件地址为港澳台地区，必填)
 	Dutiable              Dutiable                `json:"Dutiable,omitempty" json:"Dutiable,omitempty"` // 申报信息
-	IsTest                int                     `json:"IsTest"`
 }
 
 type OrderRequestReceiver struct {
@@ -88,17 +87,17 @@ type OrderRequestAddService struct {
 }
 
 type OrderRequestCommodity struct {
-	GoodsName     string `json:"GoodsName"`               // 商品名称
-	GoodsCode     string `json:"GoodsCode,omitempty"`     // 商品编码
-	Goodsquantity string `json:"Goodsquantity,omitempty"` // 商品件数
-	GoodsPrice    string `json:"GoodsPrice,omitempty"`    // 商品价格
-	GoodsWeight   string `json:"GoodsWeight,omitempty"`   // 商品重量kg
-	GoodsDesc     string `json:"GoodsDesc,omitempty"`     // 商品描述
-	GoodsVol      string `json:"GoodsVol,omitempty"`      // 商品体积m3
+	GoodsName     string  `json:"GoodsName"`               // 商品名称
+	GoodsCode     string  `json:"GoodsCode,omitempty"`     // 商品编码
+	Goodsquantity int     `json:"Goodsquantity,omitempty"` // 商品件数
+	GoodsPrice    float64 `json:"GoodsPrice,omitempty"`    // 商品价格
+	GoodsWeight   float64 `json:"GoodsWeight,omitempty"`   // 商品重量kg
+	GoodsDesc     string  `json:"GoodsDesc,omitempty"`     // 商品描述
+	GoodsVol      float64 `json:"GoodsVol,omitempty"`      // 商品体积m3
 }
 
 type Dutiable struct {
-	DeclaredValue string `json:"DeclaredValue"` // 申报价值：订单货物总声明价 值，包含子母件，精确到小数 点后 3 位 (ShipperCode 为 SF 且收件 地址为港澳台地区，必填)
+	DeclaredValue float64 `json:"DeclaredValue"` // 申报价值：订单货物总声明价 值，包含子母件，精确到小数 点后 3 位 (ShipperCode 为 SF 且收件 地址为港澳台地区，必填)
 }
 
 func (req *OrderRequest) UpdateRequestData() *OrderRequest {

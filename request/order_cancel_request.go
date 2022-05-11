@@ -19,7 +19,6 @@ type OrderCancelRequest struct {
 	ExpNo        string `json:"ExpNo"`                  // 快递单号
 	CustomerName string `json:"CustomerName,omitempty"` // 电子面单客户号
 	CustomerPwd  string `json:"CustomerPwd,omitempty"`  // 电子面单密码
-	IsTest       int    `json:"IsTest"`
 }
 
 func (req *OrderCancelRequest) UpdateRequestData() *OrderCancelRequest {
