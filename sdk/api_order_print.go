@@ -48,13 +48,25 @@ func (obj *ApiOrderPrint) Base64Encode(src []byte) []byte {
 //	return ""
 //} //本地ip地址，示范
 
-func (obj *ApiOrderPrint) BuildForm(req request.OrderPrintRequest) string {
+type Resp struct {
+	RequestDataJson string `json:"RequestDataJson"`
+	EBusinessId string 	`json:"EBusinessId"`
+	DataSign string `json:"DataSign"`
+	IsPreview string `json:"IsPreview"`
+}
+
+func (obj *ApiOrderPrint) BuildForm(req request.OrderPrintRequest) (resp Resp) {
 	url := enum.GATEWAY + enum.URI_PRINT
 	requestDataJson, _ := json.Marshal(req.RequestData)
 	dataSign := obj.DataSign(req.IP, string(requestDataJson), obj.config.GetAppKey())
 	form := "<form id='form1' method='POST' action='" + url + "'><input type='text' name='RequestData' value='" + string(requestDataJson) + "'/><input type='text' name='EBusinessID' value='" + obj.config.GetEBusinessId() + "'/><input type='text' name='DataSign' value='" + dataSign + "'/><input type='text' name='IsPriview' value='" + req.IsPreview + "'/></form><script>form1.submit();</script>"
 	fmt.Println(form)
-	return form
+
+	resp.RequestDataJson = string(requestDataJson)
+	resp.EBusinessId = obj.config.GetEBusinessId()
+	resp.DataSign = dataSign
+	resp.IsPreview = req.IsPreview
+	return resp
 }
 
 func (obj *ApiOrderPrint) DataSign(ip string, requestDataJson string, apiKey string) string {
