@@ -49,7 +49,7 @@ func (obj *ApiOrderPrint) Base64Encode(src []byte) []byte {
 //} //本地ip地址，示范
 
 type Resp struct {
-	RequestDataJson string `json:"RequestDataJson"`
+	RequestData string `json:"RequestData"`
 	EBusinessId string 	`json:"EBusinessId"`
 	DataSign string `json:"DataSign"`
 	IsPreview string `json:"IsPreview"`
@@ -62,7 +62,7 @@ func (obj *ApiOrderPrint) BuildForm(req request.OrderPrintRequest) (resp Resp) {
 	form := "<form id='form1' method='POST' action='" + url + "'><input type='text' name='RequestData' value='" + string(requestDataJson) + "'/><input type='text' name='EBusinessID' value='" + obj.config.GetEBusinessId() + "'/><input type='text' name='DataSign' value='" + dataSign + "'/><input type='text' name='IsPriview' value='" + req.IsPreview + "'/></form><script>form1.submit();</script>"
 	fmt.Println(form)
 
-	resp.RequestDataJson = string(requestDataJson)
+	resp.RequestData = string(requestDataJson)
 	resp.EBusinessId = obj.config.GetEBusinessId()
 	resp.DataSign = dataSign
 	resp.IsPreview = req.IsPreview
