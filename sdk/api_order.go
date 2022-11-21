@@ -48,3 +48,25 @@ func (obj ApiOrder) GetResponse(req request.OrderRequest) (response.OrderRespons
 	}
 	return resp, nil
 }
+
+// 沙箱
+func (obj ApiOrder) GetTestResponse(req request.OrderRequest) (response.OrderResponse, error) {
+	url := enum.GATEWAY_SANDBOX
+
+	req.UpdateRequestData()
+	var resp response.OrderResponse
+	httpResp, err := http.HttpPostForm(url, req.ToValues(), obj.logger)
+	if err != nil {
+		return resp, util.ErrorWrap(err, "ApiRecognise,http fail")
+	} else if !httpResp.IsOk() {
+		return resp, util.ErrorNew("ApiRecognise,code:" + strconv.Itoa(httpResp.GetCode()))
+	}
+	err = json.Unmarshal(httpResp.GetBytes(), &resp)
+	if err != nil {
+		return resp, util.ErrorWrap(err, "ApiRecognise,json decode fail")
+	}
+	if !resp.IsSuccess() {
+		return resp, util.ErrorNew("ApiRecognise," + resp.GetError())
+	}
+	return resp, nil
+}
