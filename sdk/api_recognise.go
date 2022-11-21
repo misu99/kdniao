@@ -2,12 +2,12 @@ package sdk
 
 import (
 	"encoding/json"
-	"github.com/yangzhenrui/kdniao"
-	"github.com/yangzhenrui/kdniao/enum"
-	"github.com/yangzhenrui/kdniao/request"
-	"github.com/yangzhenrui/kdniao/response"
-	"github.com/yangzhenrui/kdniao/util"
-	"github.com/yangzhenrui/kdniao/util/http"
+	"github.com/misu99/kdniao"
+	"github.com/misu99/kdniao/enum"
+	"github.com/misu99/kdniao/request"
+	"github.com/misu99/kdniao/response"
+	"github.com/misu99/kdniao/util"
+	"github.com/misu99/kdniao/util/http"
 	"strconv"
 )
 

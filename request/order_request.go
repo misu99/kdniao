@@ -2,7 +2,7 @@ package request
 
 import (
 	"encoding/json"
-	"github.com/yangzhenrui/kdniao/enum"
+	"github.com/misu99/kdniao/enum"
 )
 
 func NewOrderRequest() OrderRequest {

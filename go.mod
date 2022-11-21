@@ -1,4 +1,4 @@
-module github.com/yangzhenrui/kdniao
+module github.com/misu99/kdniao
 
 go 1.18
 

@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/jinzhu/copier"
-	"github.com/yangzhenrui/kdniao"
-	"github.com/yangzhenrui/kdniao/enum"
-	"github.com/yangzhenrui/kdniao/request"
-	"github.com/yangzhenrui/kdniao/util"
+	"github.com/misu99/kdniao"
+	"github.com/misu99/kdniao/enum"
+	"github.com/misu99/kdniao/request"
+	"github.com/misu99/kdniao/util"
 )
 
 func NewOrderPrint(config kdniao.KdniaoConfig, logger kdniao.KdniaoLoggerInterface) ApiOrderPrint {
@@ -50,9 +50,9 @@ func (obj *ApiOrderPrint) Base64Encode(src []byte) []byte {
 
 type Resp struct {
 	RequestData string `json:"RequestData"`
-	EBusinessId string 	`json:"EBusinessId"`
-	DataSign string `json:"DataSign"`
-	IsPreview string `json:"IsPreview"`
+	EBusinessId string `json:"EBusinessId"`
+	DataSign    string `json:"DataSign"`
+	IsPreview   string `json:"IsPreview"`
 }
 
 func (obj *ApiOrderPrint) BuildForm(req request.OrderPrintRequest) (resp Resp) {

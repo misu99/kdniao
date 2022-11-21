@@ -2,8 +2,8 @@ package test
 
 import (
 	"errors"
-	"github.com/yangzhenrui/kdniao"
-	"github.com/yangzhenrui/kdniao/util"
+	"github.com/misu99/kdniao"
+	"github.com/misu99/kdniao/util"
 	"strings"
 )
 

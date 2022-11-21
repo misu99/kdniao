@@ -1,7 +1,7 @@
 package http
 
 import (
-	"github.com/yangzhenrui/kdniao"
+	"github.com/misu99/kdniao"
 	"io/ioutil"
 	"net/http"
 	"net/url"

@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/yangzhenrui/kdniao/data"
+	"github.com/misu99/kdniao/data"
 	"testing"
 )
 
